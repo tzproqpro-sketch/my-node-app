@@ -1,0 +1,13 @@
+{
+  "name": "lab-11-nodejs-npm",
+  "version": "1.0.0",
+  "description": "Laboratory work 11: Node.js and NPM setup",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Zubelik Trofim Alekseevich",
+  "license": "ISC",
+  "type": "commonjs"
+}

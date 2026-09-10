@@ -32,8 +32,8 @@ const server = http.createServer((req, res) => {
   res.end(`
     <main style="font-family: Arial, sans-serif; line-height: 1.6">
       <div>${student.fullName}</div>
-      <div>Группа: ${student.group}</div>
-      <div>Пи до ${student.journalNumber} знаков: ${piValue}</div>
+      <div>${student.group}</div>
+      <div>${piValue}</div>
     </main>
   `);
 });

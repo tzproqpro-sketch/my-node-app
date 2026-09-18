@@ -1,3 +1,0 @@
-[2026-09-14T15:52:49.506Z] server:started: {"port":3000}
-[2026-09-14T15:53:04.399Z] request:received: {"url":"/","method":"GET"}
-[2026-09-14T15:53:08.162Z] server:stopped: 

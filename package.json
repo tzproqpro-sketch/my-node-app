@@ -1,13 +1,15 @@
 {
-  "name": "lab-11-nodejs-npm",
+  "name": "lab-13-callbacks-and-promises",
   "version": "1.0.0",
-  "description": "Laboratory work 11: Node.js and NPM setup",
-  "main": "index.js",
+  "description": "Laboratory work 13: callbacks, promises, and a hybrid file manager",
+  "main": "fileOperations.js",
   "scripts": {
-    "start": "node index.js"
+    "test:callbacks": "node test-callbacks.js",
+    "test:promises": "node test-promises.js",
+    "test:hybrid": "node test-hybrid.js",
+    "test": "npm run test:callbacks && npm run test:promises && npm run test:hybrid"
   },
-  "keywords": [],
-  "author": "Zubelik Trofim Alekseevich",
-  "license": "ISC",
-  "type": "commonjs"
+  "engines": {
+    "node": ">=18"
+  }
 }

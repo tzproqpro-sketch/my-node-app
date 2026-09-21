@@ -1,15 +1,19 @@
 {
-  "name": "lab-13-callbacks-and-promises",
+  "name": "lab-14-file-system",
   "version": "1.0.0",
-  "description": "Laboratory work 13: callbacks, promises, and a hybrid file manager",
-  "main": "fileOperations.js",
+  "description": "Laboratory work 14: Node.js file system tasks",
+  "main": "task1-create-student-file.js",
   "scripts": {
-    "test:callbacks": "node test-callbacks.js",
-    "test:promises": "node test-promises.js",
-    "test:hybrid": "node test-hybrid.js",
-    "test": "npm run test:callbacks && npm run test:promises && npm run test:hybrid"
+    "task1": "node task1-create-student-file.js",
+    "task2": "node task2-directories.js",
+    "task3": "node task3-directory-scan.js .",
+    "start": "npm run task1 && npm run task2 && npm run task3",
+    "test": "npm run start"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
   }
 }

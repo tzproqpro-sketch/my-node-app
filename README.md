@@ -1,13 +1,21 @@
-# Laboratory work 13
+# Laboratory work 14
 
-This branch contains the first three tasks:
+Completed first three tasks:
 
-1. Callback-based file operations.
-2. Promise-based file operations.
-3. A hybrid file manager with callback support and error handling.
+1. Create and read `student_9.txt`.
+2. Create, update, and print the `project_9` directory tree.
+3. Recursively scan a directory and save `report_9.json`.
 
-Run all demonstrations with:
+Run all tasks:
 
 ```bash
 npm test
+```
+
+Run tasks separately:
+
+```bash
+npm run task1
+npm run task2
+npm run task3
 ```

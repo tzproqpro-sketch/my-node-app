@@ -1,0 +1,105 @@
+{
+  "variant": 9,
+  "rootDirectory": ".",
+  "scannedAt": "2026-09-21T09:43:17.137Z",
+  "foldersCount": 11,
+  "filesCount": 21,
+  "totalSizeBytes": 247541,
+  "extensions": {
+    "[no extension]": {
+      "filesCount": 1,
+      "totalSizeBytes": 20,
+      "totalSizeFormatted": "20 B"
+    },
+    ".js": {
+      "filesCount": 5,
+      "totalSizeBytes": 9364,
+      "totalSizeFormatted": "9.14 KB"
+    },
+    ".pdf": {
+      "filesCount": 1,
+      "totalSizeBytes": 215942,
+      "totalSizeFormatted": "210.88 KB"
+    },
+    ".json": {
+      "filesCount": 2,
+      "totalSizeBytes": 21279,
+      "totalSizeFormatted": "20.78 KB"
+    },
+    ".txt": {
+      "filesCount": 11,
+      "totalSizeBytes": 613,
+      "totalSizeFormatted": "613 B"
+    },
+    ".md": {
+      "filesCount": 1,
+      "totalSizeBytes": 323,
+      "totalSizeFormatted": "323 B"
+    }
+  },
+  "largestFiles": [
+    {
+      "name": "LR14.pdf",
+      "relativePath": "LR14.pdf",
+      "size": 215942,
+      "sizeFormatted": "210.88 KB"
+    },
+    {
+      "name": "package-lock.json",
+      "relativePath": "package-lock.json",
+      "size": 20773,
+      "sizeFormatted": "20.29 KB"
+    },
+    {
+      "name": "task3-directory-scan.js",
+      "relativePath": "task3-directory-scan.js",
+      "size": 4051,
+      "sizeFormatted": "3.96 KB"
+    },
+    {
+      "name": "task2-directories.js",
+      "relativePath": "task2-directories.js",
+      "size": 3132,
+      "sizeFormatted": "3.06 KB"
+    },
+    {
+      "name": "task1-create-student-file.js",
+      "relativePath": "task1-create-student-file.js",
+      "size": 1412,
+      "sizeFormatted": "1.38 KB"
+    }
+  ],
+  "smallestFiles": [
+    {
+      "name": ".gitignore",
+      "relativePath": ".gitignore",
+      "size": 20,
+      "sizeFormatted": "20 B"
+    },
+    {
+      "name": "info.txt",
+      "relativePath": "project_9\\data\\input\\info.txt",
+      "size": 22,
+      "sizeFormatted": "22 B"
+    },
+    {
+      "name": "info.txt",
+      "relativePath": "project_9\\src\\components\\1\\info.txt",
+      "size": 26,
+      "sizeFormatted": "26 B"
+    },
+    {
+      "name": "info.txt",
+      "relativePath": "project_9\\src\\components\\2\\info.txt",
+      "size": 26,
+      "sizeFormatted": "26 B"
+    },
+    {
+      "name": "info.txt",
+      "relativePath": "project_9\\src\\components\\3\\info.txt",
+      "size": 26,
+      "sizeFormatted": "26 B"
+    }
+  ],
+  "totalSizeFormatted": "241.74 KB"
+}

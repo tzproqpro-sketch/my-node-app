@@ -1,0 +1,12 @@
+Student: Zubelik Trofim Alekseevich
+Group: 477
+Variant: 9
+Date: 21.09.2026, 12:43:16
+
+Favorite books:
+1. War and Peace - Leo Tolstoy
+2. Crime and Punishment - Fyodor Dostoevsky
+3. The Master and Margarita - Mikhail Bulgakov
+4. 1984 - George Orwell
+5. Harry Potter and the Philosopher Stone - J. K. Rowling
+Records count: 11

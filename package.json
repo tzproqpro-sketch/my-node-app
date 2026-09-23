@@ -1,17 +1,20 @@
 {
-  "name": "lab-14-file-system",
+  "name": "lab-15-koa-server",
   "version": "1.0.0",
-  "description": "Laboratory work 14: Node.js file system tasks",
-  "main": "task1-create-student-file.js",
+  "description": "Laboratory work 15: a Koa.js HTTP server and REST API",
+  "main": "server.js",
   "scripts": {
-    "task1": "node task1-create-student-file.js",
-    "task2": "node task2-directories.js",
-    "task3": "node task3-directory-scan.js .",
-    "start": "npm run task1 && npm run task2 && npm run task3",
-    "test": "npm run start"
+    "start": "node server.js",
+    "test": "node test-api.js",
+    "screenshots": "node scripts/create-screenshots.js"
   },
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@koa/router": "^14.0.0",
+    "koa": "^3.0.0",
+    "koa-bodyparser": "^4.4.1"
   },
   "devDependencies": {
     "sharp": "^0.35.4"

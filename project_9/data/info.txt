@@ -1,2 +1,0 @@
-Project data files
-Variant: 9

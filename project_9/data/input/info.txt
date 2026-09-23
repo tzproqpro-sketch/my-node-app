@@ -1,2 +1,0 @@
-Input data
-Variant: 9

@@ -1,0 +1,28 @@
+Server is running on http://localhost:3000
+[2026-09-23 13:43:55] GET / - 23ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] GET /api/users - 21ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] POST /api/users - 11ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] PUT /api/users/3 - 1ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] POST /api/users - 1ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] DELETE /api/users/3 - 1ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] GET /protected - 1ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] GET /protected - 0ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] GET /error - 0ms (finished 2026-09-23 13:43:55)
+[error] Error: Intentional test error
+    at C:\Users\Трофим\OneDrive\Desktop\веб\routes.js:118:17
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\@koa\router\lib\router.js:260:18
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:34:12
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\@koa\router\lib\router.js:265:33)
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\Трофим\OneDrive\Desktop\веб\server.js:17:11
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:42:32)
+    at bodyParser (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-bodyparser\index.js:78:11)
+[2026-09-23 13:43:55] GET /students - 1ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] POST /students - 1ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] PUT /students/51 - 0ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] GET /students/9999 - 0ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] GET /students - 0ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] GET /students - 1ms (finished 2026-09-23 13:43:55)
+[2026-09-23 13:43:55] DELETE /students/51 - 0ms (finished 2026-09-23 13:43:55)

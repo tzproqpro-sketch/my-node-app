@@ -89,6 +89,11 @@ async function runChecks() {
 
     const deletedUser = await request('DELETE', `/api/users/${createdUser.payload.id}`);
     check('Task 2 delete user', deletedUser.response.status, 200);
+    const missingUser = await request('PUT', '/api/users/9999', {
+      name: 'No User',
+      group: 'BBMO-01-23'
+    });
+    check('Task 2 missing user', missingUser.response.status, 404);
 
     const unauthorized = await request('GET', '/protected');
     check('Task 3 authorization required', unauthorized.response.status, 401);
@@ -103,12 +108,23 @@ async function runChecks() {
     check('Task 4 filtered result size', filtered.payload.students.length, 4);
     check('Task 4 filtered group', filtered.payload.students.every((student) => student.group === 'BBMO-01-23'), true);
 
+    const existingStudent = await request('GET', '/students/1');
+    check('Task 4 get student by id', existingStudent.response.status, 200);
+    check('Task 4 returned student id', existingStudent.payload.id, 1);
+
     const createdStudent = await request('POST', '/students', {
       name: 'New Student',
       group: 'BBMO-01-23',
       course: 2
     });
     check('Task 4 create student', createdStudent.response.status, 201);
+
+    const invalidStudent = await request('POST', '/students', {
+      name: 'Invalid Student',
+      group: 'BBMO-01-23',
+      course: 7
+    });
+    check('Task 4 invalid student', invalidStudent.response.status, 400);
 
     const updatedStudent = await request('PUT', `/students/${createdStudent.payload.id}`, { course: 3 });
     check('Task 4 update student', updatedStudent.response.status, 200);
@@ -124,6 +140,9 @@ async function runChecks() {
     check('Task 5 pagination and search', paged.response.status, 200);
     check('Task 5 page size', paged.payload.students.length <= 5, true);
     check('Task 5 search result', paged.payload.total > 0, true);
+    check('Task 5 descending sort', paged.payload.students.every((student, index, page) => (
+      index === 0 || page[index - 1].name.localeCompare(student.name) >= 0
+    )), true);
 
     const deletedStudent = await request('DELETE', `/students/${createdStudent.payload.id}`);
     check('Task 5 delete student', deletedStudent.response.status, 200);

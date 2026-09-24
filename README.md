@@ -1,21 +1,32 @@
-# Laboratory work 14
+# Laboratory Work 15
 
-Completed first three tasks:
+This project contains the first five tasks from Laboratory Work 15. It is a Koa.js server with a home page, two REST APIs, request logging, authorization, error handling, validation, filtering, pagination, sorting, searching, and generated student data.
 
-1. Create and read `student_9.txt`.
-2. Create, update, and print the `project_9` directory tree.
-3. Recursively scan a directory and save `report_9.json`.
+## Run the server
 
-Run all tasks:
+```bash
+npm install
+npm start
+```
+
+Open `http://localhost:3000` in a browser.
+
+## Run the API checks
 
 ```bash
 npm test
 ```
 
-Run tasks separately:
+The test script starts the server, checks the required routes, saves the response summary to `test-results.txt`, and saves request logs to `server-run.txt`.
 
-```bash
-npm run task1
-npm run task2
-npm run task3
-```
+## Main routes
+
+- `GET /` - HTML page with laboratory and group information.
+- `GET|POST /api/users` - list and create users.
+- `PUT|DELETE /api/users/:id` - update and delete users.
+- `GET /protected` - route protected by the `Authorization` header.
+- `GET /error` - route used to check the error middleware.
+- `GET|POST /students` - filter, search, paginate, create students.
+- `GET|PUT|DELETE /students/:id` - read, update, and delete one student.
+
+Screenshots from the checks are stored in `screenshots/`.

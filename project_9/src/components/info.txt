@@ -1,2 +1,0 @@
-UI or logical components
-Variant: 9

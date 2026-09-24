@@ -1,0 +1,31 @@
+Server is running on http://localhost:3000
+[2026-09-23 14:03:03] GET / - 21ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] GET /api/users - 15ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] POST /api/users - 14ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] PUT /api/users/3 - 1ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] POST /api/users - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] DELETE /api/users/3 - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] PUT /api/users/9999 - 1ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] GET /protected - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] GET /protected - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] GET /error - 1ms (finished 2026-09-23 14:03:03)
+[error] Error: Intentional test error
+    at C:\Users\Трофим\OneDrive\Desktop\веб\routes.js:118:17
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\@koa\router\dist\index.js:1094:18
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:34:12
+    at RouterImplementation.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\@koa\router\dist\index.js:1013:63)
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\Трофим\OneDrive\Desktop\веб\server.js:17:11
+    at dispatch (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-compose\index.js:42:32)
+    at bodyParser (C:\Users\Трофим\OneDrive\Desktop\веб\node_modules\koa-bodyparser\index.js:78:11)
+[2026-09-23 14:03:03] GET /students - 1ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] GET /students/1 - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] POST /students - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] POST /students - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] PUT /students/51 - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] GET /students/9999 - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] GET /students - 0ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] GET /students - 3ms (finished 2026-09-23 14:03:03)
+[2026-09-23 14:03:03] DELETE /students/51 - 1ms (finished 2026-09-23 14:03:03)

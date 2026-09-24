@@ -1,0 +1,34 @@
+Laboratory Work 15 API checks
+==============================
+PASS | Task 1 home page | expected 200, received 200
+PASS | Task 1 HTML title | expected true, received true
+PASS | Task 1 group | expected true, received true
+PASS | Task 2 list users | expected 200, received 200
+PASS | Task 2 initial users | expected 2, received 2
+PASS | Task 2 create user | expected 201, received 201
+PASS | Task 2 update user | expected 200, received 200
+PASS | Task 2 invalid user | expected 400, received 400
+PASS | Task 2 delete user | expected 200, received 200
+PASS | Task 2 missing user | expected 404, received 404
+PASS | Task 3 authorization required | expected 401, received 401
+PASS | Task 3 authorized request | expected 200, received 200
+PASS | Task 3 error middleware | expected 500, received 500
+PASS | Task 3 JSON error response | expected 500, received 500
+PASS | Task 4 group filter | expected 200, received 200
+PASS | Task 4 filtered result size | expected 4, received 4
+PASS | Task 4 filtered group | expected true, received true
+PASS | Task 4 get student by id | expected 200, received 200
+PASS | Task 4 returned student id | expected 1, received 1
+PASS | Task 4 create student | expected 201, received 201
+PASS | Task 4 invalid student | expected 400, received 400
+PASS | Task 4 update student | expected 200, received 200
+PASS | Task 4 missing student | expected 404, received 404
+PASS | Task 5 generated dataset | expected 200, received 200
+PASS | Task 5 generated student count | expected true, received true
+PASS | Task 5 pagination and search | expected 200, received 200
+PASS | Task 5 page size | expected true, received true
+PASS | Task 5 search result | expected true, received true
+PASS | Task 5 descending sort | expected true, received true
+PASS | Task 5 delete student | expected 200, received 200
+
+Summary: 30/30 checks passed

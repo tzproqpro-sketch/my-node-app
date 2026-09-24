@@ -1,2 +1,0 @@
-Application source code
-Variant: 9

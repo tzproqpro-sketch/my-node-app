@@ -1,32 +1,6 @@
-# Laboratory Work 15
+# Laboratory Work 21
 
-This project contains the first five tasks from Laboratory Work 15. It is a Koa.js server with a home page, two REST APIs, request logging, authorization, error handling, validation, filtering, pagination, sorting, searching, and generated student data.
-
-## Run the server
-
-```bash
-npm install
-npm start
-```
-
-Open `http://localhost:3000` in a browser.
-
-## Run the API checks
-
-```bash
-npm test
-```
-
-The test script starts the server, checks the required routes, saves the response summary to `test-results.txt`, and saves request logs to `server-run.txt`.
-
-## Main routes
-
-- `GET /` - HTML page with laboratory and group information.
-- `GET|POST /api/users` - list and create users.
-- `PUT|DELETE /api/users/:id` - update and delete users.
-- `GET /protected` - route protected by the `Authorization` header.
-- `GET /error` - route used to check the error middleware.
-- `GET|POST /students` - filter, search, paginate, create students.
-- `GET|PUT|DELETE /students/:id` - read, update, and delete one student.
-
-Screenshots from the checks are stored in `screenshots/`.
+Tasks 1-3: custom Readable, delayed Writable with backpressure, pipe versus pipeline.
+Run npm test to run all examples. Run npm run task1, task2 or task3 separately.
+Task 3 creates input.txt and output files. Its missing-file example shows the destination left open by pipe and explicitly cleans it up afterwards. pipeline destroys both streams automatically.
+The transform chain operates on ASCII input. Assertions compare successful copies and check error cleanup.

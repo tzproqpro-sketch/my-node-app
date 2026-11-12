@@ -1,3 +1,27 @@
 const { User } = require('../models/user');
-async function list(query) { let users = await User.findAll(); if (query.group_name) users = users.filter(user => user.group_name === query.group_name); if (query.course) users = users.filter(user => user.course === Number(query.course)); if (query.search) users = users.filter(user => (user.name + ' ' + user.email).toLowerCase().includes(query.search.toLowerCase())); const descending = query.sort?.startsWith('-'); const field = (query.sort || 'name').replace('-', ''); if (['name', 'age', 'created_at'].includes(field)) users.sort((a, b) => String(a[field]).localeCompare(String(b[field])) * (descending ? -1 : 1)); const page = Math.max(1, Number(query.page) || 1); const limit = Math.min(100, Math.max(1, Number(query.limit) || 10)); return { data: users.slice((page - 1) * limit, page * limit), pagination: { total: users.length, page, limit, pages: Math.ceil(users.length / limit) } }; }
-module.exports = { list, User };
+const Joi = require('joi');
+const querySchema = Joi.object({ page: Joi.number().integer().min(1).default(1), limit: Joi.number().integer().min(1).max(100).default(10), sort: Joi.string().valid('name', '-name', 'age', '-age', 'created_at', '-created_at'), group_name: Joi.string().pattern(/^(?:BBMO|ББМО)-\d{2}-\d{2}$/), course: Joi.number().integer().min(1).max(4), age_min: Joi.number().integer().min(16).max(100), age_max: Joi.number().integer().min(16).max(100), search: Joi.string().max(100), q: Joi.string().max(100) });
+async function list(query) {
+  const { error, value } = querySchema.validate(query);
+  if (error || (value.age_min && value.age_max && value.age_min > value.age_max)) { const failure = new Error('Invalid query parameters'); failure.status = 400; throw failure; }
+  const filter = {};
+  if (value.group_name) filter.group_name = value.group_name;
+  if (value.course) filter.course = value.course;
+  if (value.age_min || value.age_max) filter.age = { ...(value.age_min ? { $gte: value.age_min } : {}), ...(value.age_max ? { $lte: value.age_max } : {}) };
+  const search = value.search || value.q;
+  if (search) filter.$text = { $search: search };
+  const field = (value.sort || 'name').replace(/^-/, '');
+  const sort = search && !value.sort ? { score: { $meta: 'textScore' } } : { [field]: value.sort?.startsWith('-') ? -1 : 1, _id: 1 };
+  const total = await User.collection().countDocuments(filter);
+  const data = await User.collection().find(filter, search ? { projection: { score: { $meta: 'textScore' } } } : {}).sort(sort).skip((value.page - 1) * value.limit).limit(value.limit).toArray();
+  return { data, pagination: { total, page: value.page, limit: value.limit, pages: Math.ceil(total / value.limit) } };
+}
+async function create(data) {
+  console.log('[SERVICE] Create user');
+  if (await User.findByEmail(data.email)) { const error = new Error('Email already exists'); error.status = 409; throw error; }
+  const user = await User.create(data);
+  console.log('[SERVICE] Simulated notification for', user.email);
+  return user;
+}
+async function stats() { return (await User.collection().aggregate([{ $facet: { summary: [{ $group: { _id: null, total: { $sum: 1 }, averageAge: { $avg: '$age' } } }], byGroup: [{ $group: { _id: '$group_name', count: { $sum: 1 } } }], byCourse: [{ $group: { _id: '$course', count: { $sum: 1 } } }] } }]).toArray())[0]; }
+module.exports = { list, create, stats, User };

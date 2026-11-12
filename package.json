@@ -1,1 +1,14 @@
-{"name":"lab-22-mysql","version":"1.0.0","scripts":{"task1":"node mysql-connect.js","task2":"node mysql-crud.js","task3":"node mysql-errors.js","test":"node run-tests.js"},"dependencies":{"mysql2":"^3.15.3","dotenv":"^17.2.3"}}
+{
+  "name": "lab-22-mysql",
+  "version": "1.0.0",
+  "scripts": {
+    "task1": "node mysql-connect.js",
+    "task2": "node mysql-crud.js",
+    "task3": "node mysql-errors.js",
+    "test": "node run-tests.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.15.3",
+    "dotenv": "^17.2.3"
+  }
+}

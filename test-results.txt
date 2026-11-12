@@ -1,34 +1,97 @@
-Laboratory Work 15 API checks
-==============================
-PASS | Task 1 home page | expected 200, received 200
-PASS | Task 1 HTML title | expected true, received true
-PASS | Task 1 group | expected true, received true
-PASS | Task 2 list users | expected 200, received 200
-PASS | Task 2 initial users | expected 2, received 2
-PASS | Task 2 create user | expected 201, received 201
-PASS | Task 2 update user | expected 200, received 200
-PASS | Task 2 invalid user | expected 400, received 400
-PASS | Task 2 delete user | expected 200, received 200
-PASS | Task 2 missing user | expected 404, received 404
-PASS | Task 3 authorization required | expected 401, received 401
-PASS | Task 3 authorized request | expected 200, received 200
-PASS | Task 3 error middleware | expected 500, received 500
-PASS | Task 3 JSON error response | expected 500, received 500
-PASS | Task 4 group filter | expected 200, received 200
-PASS | Task 4 filtered result size | expected 4, received 4
-PASS | Task 4 filtered group | expected true, received true
-PASS | Task 4 get student by id | expected 200, received 200
-PASS | Task 4 returned student id | expected 1, received 1
-PASS | Task 4 create student | expected 201, received 201
-PASS | Task 4 invalid student | expected 400, received 400
-PASS | Task 4 update student | expected 200, received 200
-PASS | Task 4 missing student | expected 404, received 404
-PASS | Task 5 generated dataset | expected 200, received 200
-PASS | Task 5 generated student count | expected true, received true
-PASS | Task 5 pagination and search | expected 200, received 200
-PASS | Task 5 page size | expected true, received true
-PASS | Task 5 search result | expected true, received true
-PASS | Task 5 descending sort | expected true, received true
-PASS | Task 5 delete student | expected 200, received 200
+$ node cli.js
+Usage: my-cli [options] [command]
 
-Summary: 30/30 checks passed
+Laboratory Work 17
+
+Options:
+  -V, --version              output the version number
+  -v, --verbose              detailed output
+  -h, --help                 display help for command
+
+Commands:
+  greet <name>
+  info
+  generate [options]
+  convert [options] <input>
+  init [options]
+  help [command]             display help for command
+
+Exit code: 0
+$ node cli.js greet Trofim
+Hello, Trofim! Group 477 welcomes you.
+
+Exit code: 0
+$ node cli.js info
+Student: Zubelik Trofim Alekseevich
+Group: 477
+Laboratory work: 17
+Date: 2026-11-12T15:41:57.405Z
+
+Exit code: 0
+$ node cli.js unknown
+error: unknown command 'unknown'
+
+Exit code: 1
+$ node cli.js --version
+1.0.0
+
+Exit code: 0
+$ node cli.js generate --help
+Usage: my-cli generate [options]
+
+Options:
+  -t, --type <type>    html, pdf, json, csv (default: "html")
+  -o, --output <path>
+  -f, --force
+  --dry-run
+  -h, --help           display help for command
+
+Exit code: 0
+$ node cli.js generate -t unknown
+Error: Invalid report type
+
+Exit code: 1
+$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json --dry-run
+[DRY-RUN] Would write C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json
+
+Exit code: 0
+$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json --verbose
+Generating json report
+Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json
+
+Exit code: 0
+$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json
+Error: EEXIST: file already exists, open 'C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json'
+
+Exit code: 1
+$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json --force
+Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json
+
+Exit code: 0
+$ node cli.js generate -t pdf -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.pdf
+Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.pdf
+
+Exit code: 0
+$ node cli.js init --name demo --type cli --typescript --git --no-interactive
+Project initialized: demo
+Type: cli
+Features: typescript
+Git: true
+
+Exit code: 0
+$ node cli.js init --no-interactive
+Error: --name and --type are required in non-interactive mode
+
+Exit code: 1
+$ node cli.js init --type web
+Project initialized: piped-project
+Type: web
+Features:
+Git: false
+
+Exit code: 0
+$ node cli.js init
+Error: --name and --type are required in non-interactive mode
+
+Exit code: 1
+All automated CLI checks passed.

@@ -1,1 +1,17 @@
-{"name":"lab-23-mongodb","version":"1.0.0","scripts":{"task1":"node mongodb-connect.js","task2":"node mongodb-crud.js","task3":"node mongodb-advanced.js","test":"node test-mongo.js"},"dependencies":{"mongodb":"^6.21.0","dotenv":"^17.2.3"},"devDependencies":{"mongodb-memory-server":"^10.3.0"}}
+{
+  "name": "lab-23-mongodb",
+  "version": "1.0.0",
+  "scripts": {
+    "task1": "node mongodb-connect.js",
+    "task2": "node mongodb-crud.js",
+    "task3": "node mongodb-advanced.js",
+    "test": "node test-mongo.js"
+  },
+  "dependencies": {
+    "mongodb": "^6.21.0",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.3.0"
+  }
+}

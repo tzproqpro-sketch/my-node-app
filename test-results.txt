@@ -36,7 +36,7 @@ node:events:487
       ^
 
 Error: Demonstration: no error listener
-    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab-work\events-class.js:17:14)
+    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:31:14)
     at Module._compile (node:internal/modules/cjs/loader:1872:14)
     at Object..js (node:internal/modules/cjs/loader:2003:10)
     at Module.load (node:internal/modules/cjs/loader:1594:32)
@@ -45,8 +45,8 @@ Error: Demonstration: no error listener
     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
     at node:internal/main/run_main_module:33:47
 Emitted 'error' event on DatabaseConnection instance at:
-    at DatabaseConnection.error (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab-work\events-class.js:12:23)
-    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab-work\events-class.js:17:8)
+    at DatabaseConnection.error (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:25:10)
+    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:31:8)
     at Module._compile (node:internal/modules/cjs/loader:1872:14)
     at Object..js (node:internal/modules/cjs/loader:2003:10)
     at Module.load (node:internal/modules/cjs/loader:1594:32)

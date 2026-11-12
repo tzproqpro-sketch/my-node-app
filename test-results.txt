@@ -1,34 +1,293 @@
-Laboratory Work 15 API checks
-==============================
-PASS | Task 1 home page | expected 200, received 200
-PASS | Task 1 HTML title | expected true, received true
-PASS | Task 1 group | expected true, received true
-PASS | Task 2 list users | expected 200, received 200
-PASS | Task 2 initial users | expected 2, received 2
-PASS | Task 2 create user | expected 201, received 201
-PASS | Task 2 update user | expected 200, received 200
-PASS | Task 2 invalid user | expected 400, received 400
-PASS | Task 2 delete user | expected 200, received 200
-PASS | Task 2 missing user | expected 404, received 404
-PASS | Task 3 authorization required | expected 401, received 401
-PASS | Task 3 authorized request | expected 200, received 200
-PASS | Task 3 error middleware | expected 500, received 500
-PASS | Task 3 JSON error response | expected 500, received 500
-PASS | Task 4 group filter | expected 200, received 200
-PASS | Task 4 filtered result size | expected 4, received 4
-PASS | Task 4 filtered group | expected true, received true
-PASS | Task 4 get student by id | expected 200, received 200
-PASS | Task 4 returned student id | expected 1, received 1
-PASS | Task 4 create student | expected 201, received 201
-PASS | Task 4 invalid student | expected 400, received 400
-PASS | Task 4 update student | expected 200, received 200
-PASS | Task 4 missing student | expected 404, received 404
-PASS | Task 5 generated dataset | expected 200, received 200
-PASS | Task 5 generated student count | expected true, received true
-PASS | Task 5 pagination and search | expected 200, received 200
-PASS | Task 5 page size | expected true, received true
-PASS | Task 5 search result | expected true, received true
-PASS | Task 5 descending sort | expected true, received true
-PASS | Task 5 delete student | expected 200, received 200
-
-Summary: 30/30 checks passed
+$ node mongodb-connect.js
+[HEARTBEAT] Success 2026-11-12T15:55:12.616Z
+Ping: { ok: 1 }
+Version: 7.0.24
+Databases: {
+  databases: [
+    { name: 'admin', sizeOnDisk: 8192, empty: false },
+    { name: 'config', sizeOnDisk: 12288, empty: false },
+    { name: 'local', sizeOnDisk: 8192, empty: false }
+  ],
+  totalSize: 28672,
+  totalSizeMb: 0,
+  ok: 1
+}
+Collections: []
+[HEARTBEAT] Success 2026-11-12T15:55:13.632Z
+[HEARTBEAT] Success 2026-11-12T15:55:14.133Z
+Client closed
+$ node mongodb-crud.js
+insertOne: new ObjectId('6af5e162d2031ee4c45bff7b')
+insertMany: {
+  '0': new ObjectId('6af5e162d2031ee4c45bff7c'),
+  '1': new ObjectId('6af5e162d2031ee4c45bff7d')
+}
+All demo documents: [
+  {
+    _id: new ObjectId('6af5e162d2031ee4c45bff7b'),
+    name: 'Trofim',
+    grade: 4.5,
+    group_name: '477',
+    course: 2,
+    created_at: 2026-11-12T15:55:14.513Z,
+    demo: 'crud-1794498914484'
+  },
+  {
+    _id: new ObjectId('6af5e162d2031ee4c45bff7c'),
+    name: 'Anna',
+    grade: 3.8,
+    group_name: '477',
+    course: 2,
+    created_at: 2026-11-12T15:55:14.516Z,
+    demo: 'crud-1794498914484'
+  },
+  {
+    _id: new ObjectId('6af5e162d2031ee4c45bff7d'),
+    name: 'Ivan',
+    grade: 2.5,
+    group_name: '477',
+    course: 2,
+    created_at: 2026-11-12T15:55:14.516Z,
+    demo: 'crud-1794498914484'
+  }
+]
+Filter/sort/page: [
+  {
+    _id: new ObjectId('6af5e162d2031ee4c45bff7b'),
+    name: 'Trofim',
+    grade: 4.5,
+    group_name: '477',
+    course: 2,
+    created_at: 2026-11-12T15:55:14.513Z,
+    demo: 'crud-1794498914484'
+  },
+  {
+    _id: new ObjectId('6af5e162d2031ee4c45bff7c'),
+    name: 'Anna',
+    grade: 3.8,
+    group_name: '477',
+    course: 2,
+    created_at: 2026-11-12T15:55:14.516Z,
+    demo: 'crud-1794498914484'
+  },
+  {
+    _id: new ObjectId('6af5e162d2031ee4c45bff7d'),
+    name: 'Ivan',
+    grade: 2.5,
+    group_name: '477',
+    course: 2,
+    created_at: 2026-11-12T15:55:14.516Z,
+    demo: 'crud-1794498914484'
+  }
+]
+findOne: {
+  _id: new ObjectId('6af5e162d2031ee4c45bff7b'),
+  name: 'Trofim',
+  grade: 4.5,
+  group_name: '477',
+  course: 2,
+  created_at: 2026-11-12T15:55:14.513Z,
+  demo: 'crud-1794498914484'
+}
+Projection: [
+  { name: 'Trofim', grade: 4.5 },
+  { name: 'Anna', grade: 3.8 },
+  { name: 'Ivan', grade: 2.5 }
+]
+updateOne: {
+  acknowledged: true,
+  modifiedCount: 1,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 1
+}
+updateMany: {
+  acknowledged: true,
+  modifiedCount: 3,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 3
+}
+deleteOne: { acknowledged: true, deletedCount: 1 }
+deleteMany: { acknowledged: true, deletedCount: 1 }
+$ node mongodb-advanced.js
+Cursor count: 1000000 peak heap: 77054864
+next(): {
+  _id: new ObjectId('6af5e1626d017f662c8cec57'),
+  name: 'Ivan Petrov',
+  group_name: '478',
+  course: 1,
+  grade: 3,
+  email: 'student0@example.com'
+}
+toArray count: 1000000 heap delta: 372535168
+Average grades: [ { _id: '478', average: 3.9 }, { _id: '477', average: 4 } ]
+By course: [
+  { _id: 2, count: 250000 },
+  { _id: 4, count: 250000 },
+  { _id: 1, count: 250000 },
+  { _id: 3, count: 250000 }
+]
+Top 10: [
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cec7e'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cecce'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cecf6'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cec6a'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cec92'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cece2'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8ced1e'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8ced0a'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cecba'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8ceca6'),
+    name: 'Anna Ivanova',
+    grade: 4.9
+  }
+]
+Join: [
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cec55'),
+    group_name: '477',
+    curator: 'Ivan Petrov',
+    students: [ [Object] ]
+  },
+  {
+    _id: new ObjectId('6af5e1626d017f662c8cec56'),
+    group_name: '478',
+    curator: 'Anna Orlova',
+    students: [ [Object] ]
+  }
+]
+Without index: {
+  executionSuccess: true,
+  nReturned: 1,
+  executionTimeMillis: 449,
+  totalKeysExamined: 0,
+  totalDocsExamined: 1000000,
+  executionStages: {
+    stage: 'COLLSCAN',
+    filter: { email: [Object] },
+    nReturned: 1,
+    executionTimeMillisEstimate: 20,
+    works: 1000001,
+    advanced: 1,
+    needTime: 999999,
+    needYield: 0,
+    saveState: 1000,
+    restoreState: 1000,
+    isEOF: 1,
+    direction: 'forward',
+    docsExamined: 1000000
+  }
+}
+With index: {
+  executionSuccess: true,
+  nReturned: 1,
+  executionTimeMillis: 1,
+  totalKeysExamined: 1,
+  totalDocsExamined: 1,
+  executionStages: {
+    stage: 'FETCH',
+    nReturned: 1,
+    executionTimeMillisEstimate: 0,
+    works: 2,
+    advanced: 1,
+    needTime: 0,
+    needYield: 0,
+    saveState: 0,
+    restoreState: 0,
+    isEOF: 1,
+    docsExamined: 1,
+    alreadyHasObj: 0,
+    inputStage: {
+      stage: 'IXSCAN',
+      nReturned: 1,
+      executionTimeMillisEstimate: 0,
+      works: 2,
+      advanced: 1,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      keyPattern: [Object],
+      indexName: 'email_1',
+      isMultiKey: false,
+      multiKeyPaths: [Object],
+      isUnique: true,
+      isSparse: false,
+      isPartial: false,
+      indexVersion: 2,
+      direction: 'forward',
+      indexBounds: [Object],
+      keysExamined: 1,
+      seeks: 1,
+      dupsTested: 0,
+      dupsDropped: 0
+    }
+  }
+}
+Text search: [
+  {
+    _id: new ObjectId('6af5e1666d017f662c946419'),
+    name: 'Ivan Petrov',
+    score: 0.75
+  },
+  {
+    _id: new ObjectId('6af5e1686d017f662c9980bf'),
+    name: 'Ivan Petrov',
+    score: 0.75
+  },
+  {
+    _id: new ObjectId('6af5e1686d017f662c9a66e5'),
+    name: 'Ivan Petrov',
+    score: 0.75
+  },
+  {
+    _id: new ObjectId('6af5e1656d017f662c92da65'),
+    name: 'Ivan Petrov',
+    score: 0.75
+  },
+  {
+    _id: new ObjectId('6af5e1686d017f662c98b489'),
+    name: 'Ivan Petrov',
+    score: 0.75
+  }
+]
+All real MongoDB execution checks passed.

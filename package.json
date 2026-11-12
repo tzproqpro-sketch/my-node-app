@@ -1,1 +1,12 @@
-{"name":"lab-17-cli","version":"1.0.0","scripts":{"test":"node test-cli.js"},"dependencies":{"commander":"^14.0.2","inquirer":"^12.9.6","pdfkit":"^0.17.2"}}
+{
+  "name": "lab-17-cli",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node test-cli.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.2",
+    "inquirer": "^12.9.6",
+    "pdfkit": "^0.17.2"
+  }
+}

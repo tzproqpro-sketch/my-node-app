@@ -25,7 +25,7 @@ $ node cli.js info
 Student: Zubelik Trofim Alekseevich
 Group: 477
 Laboratory work: 17
-Date: 2026-11-12T15:41:57.405Z
+Date: 2026-11-12T20:14:54.395Z
 
 Exit code: 0
 $ node cli.js unknown
@@ -51,25 +51,25 @@ $ node cli.js generate -t unknown
 Error: Invalid report type
 
 Exit code: 1
-$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json --dry-run
-[DRY-RUN] Would write C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json
+$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.json --dry-run
+[DRY-RUN] Would write C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.json
 
 Exit code: 0
-$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json --verbose
+$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.json --verbose
 Generating json report
-Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json
+Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.json
 
 Exit code: 0
-$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json
-Error: EEXIST: file already exists, open 'C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json'
+$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.json
+Error: EEXIST: file already exists, open 'C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.json'
 
 Exit code: 1
-$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json --force
-Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.json
+$ node cli.js generate -t json -o C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.json --force
+Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.json
 
 Exit code: 0
-$ node cli.js generate -t pdf -o C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.pdf
-Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-7HSVep\report.pdf
+$ node cli.js generate -t pdf -o C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.pdf
+Report saved: C:\Users\8298~1\AppData\Local\Temp\lab17-zWFapT\report.pdf
 
 Exit code: 0
 $ node cli.js init --name demo --type cli --typescript --git --no-interactive

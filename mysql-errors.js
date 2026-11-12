@@ -5,8 +5,8 @@ async function expectError(label, action) {
   catch (error) { if (error.message === 'Expected error: ' + label) throw error; console.log(label, error.code); }
 }
 async function main() {
-  await expectError('Unavailable port', async () => { const c = await mysql.createConnection({ ...config, port: 1 }).promise(); await c.end(); });
-  await expectError('Authentication', async () => { const c = await mysql.createConnection({ ...config, password: 'intentionally-wrong' }).promise(); await c.end(); });
+  await expectError('Unavailable port', async () => { const c = await require('mysql2/promise').createConnection({ ...config, port: 1 }); await c.end(); });
+  await expectError('Authentication', async () => { const c = await require('mysql2/promise').createConnection({ ...config, password: 'intentionally-wrong' }); await c.end(); });
   let pool = createPool();
   const db = pool.promise();
   try {

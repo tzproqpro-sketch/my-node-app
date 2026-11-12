@@ -6,7 +6,7 @@ OS type: Windows_NT
 Architecture: x64
 Release: 10.0.19045
 Host: DESKTOP-ABTOP0O
-Uptime: 2417 seconds; 0 hours 40 minutes 17 seconds
+Uptime: 6178 seconds; 1 hours 42 minutes 58 seconds
 You are using Windows
 $ node os-resources.js
 Group: 477
@@ -25,8 +25,8 @@ Core 9: 3192 MHz
 Core 10: 3192 MHz
 Core 11: 3192 MHz
 Average speed: 3192 MHz
-Total: 31.94 GB; Free: 21.03 GB; Used: 10.91 GB
-Memory used: 34.2%
+Total: 31.94 GB; Free: 23.01 GB; Used: 8.93 GB
+Memory used: 28.0%
 Load average (1/5/15 minutes): Unavailable on Windows
 Memory is OK
 $ node os-network.js

@@ -1,34 +1,103 @@
-Laboratory Work 15 API checks
-==============================
-PASS | Task 1 home page | expected 200, received 200
-PASS | Task 1 HTML title | expected true, received true
-PASS | Task 1 group | expected true, received true
-PASS | Task 2 list users | expected 200, received 200
-PASS | Task 2 initial users | expected 2, received 2
-PASS | Task 2 create user | expected 201, received 201
-PASS | Task 2 update user | expected 200, received 200
-PASS | Task 2 invalid user | expected 400, received 400
-PASS | Task 2 delete user | expected 200, received 200
-PASS | Task 2 missing user | expected 404, received 404
-PASS | Task 3 authorization required | expected 401, received 401
-PASS | Task 3 authorized request | expected 200, received 200
-PASS | Task 3 error middleware | expected 500, received 500
-PASS | Task 3 JSON error response | expected 500, received 500
-PASS | Task 4 group filter | expected 200, received 200
-PASS | Task 4 filtered result size | expected 4, received 4
-PASS | Task 4 filtered group | expected true, received true
-PASS | Task 4 get student by id | expected 200, received 200
-PASS | Task 4 returned student id | expected 1, received 1
-PASS | Task 4 create student | expected 201, received 201
-PASS | Task 4 invalid student | expected 400, received 400
-PASS | Task 4 update student | expected 200, received 200
-PASS | Task 4 missing student | expected 404, received 404
-PASS | Task 5 generated dataset | expected 200, received 200
-PASS | Task 5 generated student count | expected true, received true
-PASS | Task 5 pagination and search | expected 200, received 200
-PASS | Task 5 page size | expected true, received true
-PASS | Task 5 search result | expected true, received true
-PASS | Task 5 descending sort | expected true, received true
-PASS | Task 5 delete student | expected 200, received 200
-
-Summary: 30/30 checks passed
+mysql-connect.js
+Single connection: [ { version: '8.4.0', db: 'lab22_477', user: 'student@127.0.0.1' } ]
+Pool (limit 10): [ { version: '8.4.0', db: 'lab22_477', user: 'student@127.0.0.1' } ]
+Exit code: 0
+mysql-crud.js
+INSERT: 7 1
+All: [
+  {
+    id: 7,
+    name: 'Trofim',
+    group_name: '477',
+    course: 2,
+    grade: '4.50',
+    created_at: 2026-11-12T16:08:28.000Z
+  },
+  {
+    id: 8,
+    name: 'Anna',
+    group_name: '477',
+    course: 1,
+    grade: '3.80',
+    created_at: 2026-11-12T16:08:28.000Z
+  },
+  {
+    id: 9,
+    name: 'Ivan',
+    group_name: '477',
+    course: 3,
+    grade: '4.20',
+    created_at: 2026-11-12T16:08:28.000Z
+  }
+]
+Filtered and sorted: [
+  {
+    id: 7,
+    name: 'Trofim',
+    group_name: '477',
+    course: 2,
+    grade: '4.50',
+    created_at: 2026-11-12T16:08:28.000Z
+  },
+  {
+    id: 9,
+    name: 'Ivan',
+    group_name: '477',
+    course: 3,
+    grade: '4.20',
+    created_at: 2026-11-12T16:08:28.000Z
+  },
+  {
+    id: 8,
+    name: 'Anna',
+    group_name: '477',
+    course: 1,
+    grade: '3.80',
+    created_at: 2026-11-12T16:08:28.000Z
+  }
+]
+UPDATE: ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 0,
+  info: 'Rows matched: 1  Changed: 1  Warnings: 0',
+  serverStatus: 3,
+  warningStatus: 0,
+  changedRows: 1
+}
+UPDATE: ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 0,
+  info: 'Rows matched: 1  Changed: 0  Warnings: 0',
+  serverStatus: 3,
+  warningStatus: 0,
+  changedRows: 0
+}
+Unsafe concatenation (not executed): SELECT * FROM students WHERE name = 'Trofim' OR '1'='1'
+Parameterized lookup treated the entire input as a value.
+DELETE: 1
+Delete group within transaction: 2
+Demo changes rolled back. Existing rows preserved.
+Exit code: 0
+mysql-errors.js
+Unavailable port ECONNREFUSED
+Authentication ER_ACCESS_DENIED_ERROR
+Syntax ER_PARSE_ERROR
+Duplicate ER_DUP_ENTRY
+Not null ER_BAD_NULL_ERROR
+Transaction rolled back
+Buffered rows: 100000 heap delta: 5510616
+[STREAM] 10000
+[STREAM] 20000
+[STREAM] 30000
+[STREAM] 40000
+[STREAM] 50000
+[STREAM] 60000
+[STREAM] 70000
+[STREAM] 80000
+[STREAM] 90000
+[STREAM] 100000
+Stream rows: 100000 peak heap bytes: 30448240
+Pool recreation demonstration: close old pool and open a new one.
+Exit code: 0

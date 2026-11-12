@@ -1,1 +1,10 @@
-{"name":"lab-21-streams","version":"1.0.0","scripts":{"test":"node test-streams.js","task1":"node stream-readable.js","task2":"node stream-writable.js","task3":"node stream-pipe.js"}}
+{
+  "name": "lab-21-streams",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node test-streams.js",
+    "task1": "node stream-readable.js",
+    "task2": "node stream-writable.js",
+    "task3": "node stream-pipe.js"
+  }
+}

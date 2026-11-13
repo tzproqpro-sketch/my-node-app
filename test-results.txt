@@ -1,34 +1,60 @@
-Laboratory Work 15 API checks
-==============================
-PASS | Task 1 home page | expected 200, received 200
-PASS | Task 1 HTML title | expected true, received true
-PASS | Task 1 group | expected true, received true
-PASS | Task 2 list users | expected 200, received 200
-PASS | Task 2 initial users | expected 2, received 2
-PASS | Task 2 create user | expected 201, received 201
-PASS | Task 2 update user | expected 200, received 200
-PASS | Task 2 invalid user | expected 400, received 400
-PASS | Task 2 delete user | expected 200, received 200
-PASS | Task 2 missing user | expected 404, received 404
-PASS | Task 3 authorization required | expected 401, received 401
-PASS | Task 3 authorized request | expected 200, received 200
-PASS | Task 3 error middleware | expected 500, received 500
-PASS | Task 3 JSON error response | expected 500, received 500
-PASS | Task 4 group filter | expected 200, received 200
-PASS | Task 4 filtered result size | expected 4, received 4
-PASS | Task 4 filtered group | expected true, received true
-PASS | Task 4 get student by id | expected 200, received 200
-PASS | Task 4 returned student id | expected 1, received 1
-PASS | Task 4 create student | expected 201, received 201
-PASS | Task 4 invalid student | expected 400, received 400
-PASS | Task 4 update student | expected 200, received 200
-PASS | Task 4 missing student | expected 404, received 404
-PASS | Task 5 generated dataset | expected 200, received 200
-PASS | Task 5 generated student count | expected true, received true
-PASS | Task 5 pagination and search | expected 200, received 200
-PASS | Task 5 page size | expected true, received true
-PASS | Task 5 search result | expected true, received true
-PASS | Task 5 descending sort | expected true, received true
-PASS | Task 5 delete student | expected 200, received 200
+$ node events-basic.js
+[greet] Hello, Trofim
+greet with listener: true
+[info] Group 477
+[bye] Goodbye!
+unknown without listeners: false
 
-Summary: 30/30 checks passed
+Exit code: 0
+$ node events-once.js
+[tick] on: 1
+[tick] once: 1
+[tick] on: 2
+[tick] on: 3
+on calls: 3 once calls: 1
+Listener names: [ 'first', 'second', 'third' ]
+Before removal: 3
+1. Group 477
+2. Second listener
+3. Third listener
+After removeListener: 2
+After removeAllListeners: 0
+
+Exit code: 0
+$ node events-class.js
+[connect] Group 477: connected to simulated database
+[query] Group 477: SELECT * FROM students [{"name":"Trofim","group":"477"}]
+[close] Group 477: connection closed
+[error] Group 477: Connection is closed
+[error] Group 477: Connection timeout
+
+Exit code: 0
+$ node events-class.js --unhandled-error
+
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Demonstration: no error listener
+    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:31:14)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+Emitted 'error' event on DatabaseConnection instance at:
+    at DatabaseConnection.error (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:25:10)
+    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:31:8)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.19.0
+Exit code: 1
+All checks passed; unhandled error failed in an isolated child process as expected.

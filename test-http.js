@@ -75,6 +75,23 @@ async function main() {
       body: binary,
     });
     assert.deepEqual(new Uint8Array(await response.arrayBuffer()), binary);
+    const http = require("node:http");
+    await new Promise((resolve, reject) => {
+      const req = http.request({hostname: "127.0.0.1", port: server.address().port, path: "http://[", method: "GET"}, (res) => {
+        res.resume();
+        res.on("end", () => { try { assert.equal(res.statusCode, 400); resolve(); } catch(e) { reject(e); } });
+      });
+      req.on("error", reject);
+      req.end();
+    });
+    await request("/"); // The malformed URL must not stop the server.
+    const boundary = await fetch(base + "/echo", {method: "POST", headers: {"Content-Type": "text/plain"}, body: "b".repeat(1024 * 1024)});
+    assert.equal(boundary.status, 200);
+    assert.equal((await boundary.text()).length, 1024 * 1024);
+    for (const body of ["null", "[]", "42"]) {
+      await request("/echo", {method: "POST", headers: {"Content-Type": "application/json"}, body}, 400);
+    }
+    lines.push("Malformed URL, exact 1 MiB limit and invalid JSON object checks passed.");
     lines.push("Binary echo verified. All HTTP checks passed.");
   } finally {
     await new Promise((resolve) => server.close(resolve));

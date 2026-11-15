@@ -43,8 +43,13 @@ function createServer() {
       res.statusCode = status;
       res.end(JSON.stringify(value));
     }
-    const route = new URL(req.url, "http://localhost").pathname;
     try {
+      let route;
+      try {
+        route = new URL(req.url, "http://localhost").pathname;
+      } catch {
+        return json({ error: "Invalid request URL" }, 400);
+      }
       if (req.method === "GET" || req.method === "HEAD") {
         if (route === "/headers")
           return json({
@@ -82,7 +87,7 @@ function createServer() {
         const body = await readBody(req);
         const type = (req.headers["content-type"] || "application/octet-stream")
           .split(";")[0]
-          .trim();
+          .trim().toLowerCase();
         if (type === "application/json") {
           let data;
           try {

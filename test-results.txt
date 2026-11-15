@@ -8,7 +8,7 @@ GET /missing -> 404
 <h1>404 Not Found</h1>
 X-Group: 477
 GET /headers -> 200
-{"headers":{"host":"127.0.0.1:58264","connection":"keep-alive","user-agent":"Lab20-check","accept":"*/*","accept-language":"*","sec-fetch-mode":"cors","accept-encoding":"gzip, deflate"},"httpVersion":"1.1","method":"GET","url":"/headers"}
+{"headers":{"host":"127.0.0.1:58753","connection":"keep-alive","user-agent":"Lab20-check","accept":"*/*","accept-language":"*","sec-fetch-mode":"cors","accept-encoding":"gzip, deflate"},"httpVersion":"1.1","method":"GET","url":"/headers"}
 X-Group: 477
 GET /headers/set -> 200
 {"group":"477","removed":true}
@@ -34,4 +34,17 @@ X-Group: 477
 POST /echo -> 413
 {"error":"Payload Too Large"}
 X-Group: 477
+GET / -> 200
+<h1>Laboratory Work 20</h1><p>Group: 477</p>
+X-Group: 477
+POST /echo -> 400
+{"error":"JSON object required"}
+X-Group: 477
+POST /echo -> 400
+{"error":"JSON object required"}
+X-Group: 477
+POST /echo -> 400
+{"error":"JSON object required"}
+X-Group: 477
+Malformed URL, exact 1 MiB limit and invalid JSON object checks passed.
 Binary echo verified. All HTTP checks passed.

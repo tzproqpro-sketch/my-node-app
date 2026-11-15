@@ -8,7 +8,7 @@ GET /missing -> 404
 <h1>404 Not Found</h1>
 X-Group: 477
 GET /headers -> 200
-{"headers":{"host":"127.0.0.1:56882","connection":"keep-alive","user-agent":"Lab20-check","accept":"*/*","accept-language":"*","sec-fetch-mode":"cors","accept-encoding":"gzip, deflate"},"httpVersion":"1.1","method":"GET","url":"/headers"}
+{"headers":{"host":"127.0.0.1:58264","connection":"keep-alive","user-agent":"Lab20-check","accept":"*/*","accept-language":"*","sec-fetch-mode":"cors","accept-encoding":"gzip, deflate"},"httpVersion":"1.1","method":"GET","url":"/headers"}
 X-Group: 477
 GET /headers/set -> 200
 {"group":"477","removed":true}

@@ -4,10 +4,10 @@ Pool (limit 10): [ { version: '8.4.0', db: 'lab22_477', user: 'student@127.0.0.1
 Exit code: 0
 mysql-crud.js
 Table students created: InnoDB, utf8mb4
-INSERT: insertId= 22 affectedRows= 1
+INSERT: insertId= 28 affectedRows= 1
 Bulk INSERT: affectedRows= 2
-All: [{"id":22,"name":"Trofim","group_name":"477","course":2,"grade":"4.50","created_at":"2026-11-15T20:36:03.000Z"},{"id":23,"name":"Anna","group_name":"477","course":1,"grade":"3.80","created_at":"2026-11-15T20:36:03.000Z"},{"id":24,"name":"Ivan","group_name":"477","course":3,"grade":"4.20","created_at":"2026-11-15T20:36:03.000Z"}]
-Filtered and sorted: [{"id":22,"name":"Trofim","group_name":"477","course":2,"grade":"4.50","created_at":"2026-11-15T20:36:03.000Z"},{"id":24,"name":"Ivan","group_name":"477","course":3,"grade":"4.20","created_at":"2026-11-15T20:36:03.000Z"},{"id":23,"name":"Anna","group_name":"477","course":1,"grade":"3.80","created_at":"2026-11-15T20:36:03.000Z"}]
+All: [{"id":28,"name":"Trofim","group_name":"477","course":2,"grade":"4.50","created_at":"2026-11-15T20:44:31.000Z"},{"id":29,"name":"Anna","group_name":"477","course":1,"grade":"3.80","created_at":"2026-11-15T20:44:31.000Z"},{"id":30,"name":"Ivan","group_name":"477","course":3,"grade":"4.20","created_at":"2026-11-15T20:44:31.000Z"}]
+Filtered and sorted: [{"id":28,"name":"Trofim","group_name":"477","course":2,"grade":"4.50","created_at":"2026-11-15T20:44:31.000Z"},{"id":30,"name":"Ivan","group_name":"477","course":3,"grade":"4.20","created_at":"2026-11-15T20:44:31.000Z"},{"id":29,"name":"Anna","group_name":"477","course":1,"grade":"3.80","created_at":"2026-11-15T20:44:31.000Z"}]
 UPDATE: affectedRows= 1 changedRows= 1
 UPDATE: affectedRows= 1 changedRows= 0
 Unsafe concatenation (SELECT only): SELECT * FROM students WHERE name = 'Trofim' OR '1'='1'
@@ -23,9 +23,10 @@ Authentication ER_ACCESS_DENIED_ERROR
 Syntax ER_PARSE_ERROR
 Duplicate ER_DUP_ENTRY
 Not null ER_BAD_NULL_ERROR
+Foreign key ER_NO_REFERENCED_ROW_2
 Transaction committed; inserted row verified
 Transaction rolled back after duplicate key
-Buffered rows: 100000 heap delta: 11399800
+Buffered rows: 100000 heap delta: 11395360
 [STREAM] 10000
 [STREAM] 20000
 [STREAM] 30000
@@ -36,7 +37,7 @@ Buffered rows: 100000 heap delta: 11399800
 [STREAM] 80000
 [STREAM] 90000
 [STREAM] 100000
-Stream rows: 100000 sampled peak heap bytes: 33997424 heap delta: 14098168 elapsed ms: 171
+Stream rows: 100000 sampled peak heap bytes: 34214104 heap delta: 14284472 elapsed ms: 164
 Connection released; pool closed
 Lost connection forwarded to pool: PROTOCOL_CONNECTION_LOST
 Recreating pool after connection loss

@@ -44,6 +44,20 @@ async function main() {
       await expectError("Not null", "ER_BAD_NULL_ERROR", () =>
         connection.execute("INSERT INTO error_demo VALUES (?, ?)", [2, null]),
       );
+      const suffix = require("node:crypto").randomUUID().replaceAll("-", "");
+      const parentTable = "fk_parent_" + suffix;
+      const childTable = "fk_child_" + suffix;
+      // Dedicated tables are needed: MySQL temporary tables do not support foreign keys.
+      try {
+        await connection.query("CREATE TABLE " + parentTable + " (id INT PRIMARY KEY) ENGINE=InnoDB");
+        await connection.query("CREATE TABLE " + childTable + " (parent_id INT, FOREIGN KEY (parent_id) REFERENCES " + parentTable + "(id)) ENGINE=InnoDB");
+        await expectError("Foreign key", "ER_NO_REFERENCED_ROW_2", () =>
+          connection.execute("INSERT INTO " + childTable + " (parent_id) VALUES (?)", [999]),
+        );
+      } finally {
+        await connection.query("DROP TABLE IF EXISTS " + childTable);
+        await connection.query("DROP TABLE IF EXISTS " + parentTable);
+      }
       await connection.beginTransaction();
       await connection.execute("INSERT INTO error_demo VALUES (?, ?)", [
         3,

@@ -12,6 +12,9 @@ const config = {
 function createPool() {
   const pool = mysql.createPool({ ...config, connectionLimit: 10 });
   pool.on("error", (error) => console.error("[POOL ERROR]", error.code));
+  pool.on("connection", (connection) => {
+    connection.on("error", (error) => pool.emit("error", error));
+  });
   return pool;
 }
 const schema =

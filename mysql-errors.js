@@ -49,6 +49,8 @@ async function main() {
         "Commit",
       ]);
       await connection.commit();
+      assert.equal((await connection.query("SELECT * FROM error_demo WHERE id = 3"))[0].length, 1);
+      console.log("Transaction committed; inserted row verified");
       await connection.beginTransaction();
       try {
         await connection.execute("INSERT INTO error_demo VALUES (?, ?)", [
@@ -62,7 +64,7 @@ async function main() {
         await connection.commit();
       } catch {
         await connection.rollback();
-        console.log("Transaction rolled back");
+        console.log("Transaction rolled back after duplicate key");
       }
       assert.equal(
         (await connection.query("SELECT * FROM error_demo WHERE id = 4"))[0]
@@ -110,13 +112,34 @@ async function main() {
     }
   } finally {
     await db.end();
+    console.log("Connection released; pool closed");
   }
-  console.log(
-    "Pool recreation demonstration: close old pool and open a new one.",
-  );
+  pool = createPool();
+  const recovered = pool.promise();
+  try {
+    const connection = await recovered.getConnection();
+    const id = connection.threadId;
+    const failed = new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => reject(new Error("Expected connection loss")), 3000);
+      pool.once("error", (error) => { clearTimeout(timeout); resolve(error); });
+    });
+    connection.release();
+    const killer = await recovered.getConnection();
+    // Keep the first connection busy so a different one sends KILL.
+    const other = await recovered.getConnection();
+    await other.query("KILL CONNECTION " + id);
+    other.release();
+    killer.release();
+    const error = await failed;
+    console.log("Lost connection forwarded to pool:", error.code);
+  } finally {
+    await recovered.end();
+  }
+  console.log("Recreating pool after connection loss");
   pool = createPool();
   try {
     await pool.promise().query("SELECT 1");
+    console.log("New pool query succeeded");
   } finally {
     await pool.promise().end();
   }

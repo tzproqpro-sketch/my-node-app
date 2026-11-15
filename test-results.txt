@@ -3,79 +3,16 @@ Single connection: [ { version: '8.4.0', db: 'lab22_477', user: 'student@127.0.0
 Pool (limit 10): [ { version: '8.4.0', db: 'lab22_477', user: 'student@127.0.0.1' } ]
 Exit code: 0
 mysql-crud.js
-INSERT: 7 1
-All: [
-  {
-    id: 7,
-    name: 'Trofim',
-    group_name: '477',
-    course: 2,
-    grade: '4.50',
-    created_at: 2026-11-12T16:08:28.000Z
-  },
-  {
-    id: 8,
-    name: 'Anna',
-    group_name: '477',
-    course: 1,
-    grade: '3.80',
-    created_at: 2026-11-12T16:08:28.000Z
-  },
-  {
-    id: 9,
-    name: 'Ivan',
-    group_name: '477',
-    course: 3,
-    grade: '4.20',
-    created_at: 2026-11-12T16:08:28.000Z
-  }
-]
-Filtered and sorted: [
-  {
-    id: 7,
-    name: 'Trofim',
-    group_name: '477',
-    course: 2,
-    grade: '4.50',
-    created_at: 2026-11-12T16:08:28.000Z
-  },
-  {
-    id: 9,
-    name: 'Ivan',
-    group_name: '477',
-    course: 3,
-    grade: '4.20',
-    created_at: 2026-11-12T16:08:28.000Z
-  },
-  {
-    id: 8,
-    name: 'Anna',
-    group_name: '477',
-    course: 1,
-    grade: '3.80',
-    created_at: 2026-11-12T16:08:28.000Z
-  }
-]
-UPDATE: ResultSetHeader {
-  fieldCount: 0,
-  affectedRows: 1,
-  insertId: 0,
-  info: 'Rows matched: 1  Changed: 1  Warnings: 0',
-  serverStatus: 3,
-  warningStatus: 0,
-  changedRows: 1
-}
-UPDATE: ResultSetHeader {
-  fieldCount: 0,
-  affectedRows: 1,
-  insertId: 0,
-  info: 'Rows matched: 1  Changed: 0  Warnings: 0',
-  serverStatus: 3,
-  warningStatus: 0,
-  changedRows: 0
-}
-Unsafe concatenation (not executed): SELECT * FROM students WHERE name = 'Trofim' OR '1'='1'
-Parameterized lookup treated the entire input as a value.
+Table students created: InnoDB, utf8mb4
+INSERT: insertId= 16 affectedRows= 1
+Bulk INSERT: affectedRows= 2
+All: [{"id":16,"name":"Trofim","group_name":"477","course":2,"grade":"4.50","created_at":"2026-11-15T20:25:22.000Z"},{"id":17,"name":"Anna","group_name":"477","course":1,"grade":"3.80","created_at":"2026-11-15T20:25:22.000Z"},{"id":18,"name":"Ivan","group_name":"477","course":3,"grade":"4.20","created_at":"2026-11-15T20:25:22.000Z"}]
+Filtered and sorted: [{"id":16,"name":"Trofim","group_name":"477","course":2,"grade":"4.50","created_at":"2026-11-15T20:25:22.000Z"},{"id":18,"name":"Ivan","group_name":"477","course":3,"grade":"4.20","created_at":"2026-11-15T20:25:22.000Z"},{"id":17,"name":"Anna","group_name":"477","course":1,"grade":"3.80","created_at":"2026-11-15T20:25:22.000Z"}]
+UPDATE: affectedRows= 1 changedRows= 1
+UPDATE: affectedRows= 1 changedRows= 0
+Unsafe concatenation (SELECT only): SELECT * FROM students WHERE name = 'Trofim' OR '1'='1'
+Unsafe SELECT returned rows: 3
+Parameterized lookup: 0 rows; input treated as a value.
 DELETE: 1
 Delete group within transaction: 2
 Demo changes rolled back. Existing rows preserved.
@@ -86,8 +23,9 @@ Authentication ER_ACCESS_DENIED_ERROR
 Syntax ER_PARSE_ERROR
 Duplicate ER_DUP_ENTRY
 Not null ER_BAD_NULL_ERROR
-Transaction rolled back
-Buffered rows: 100000 heap delta: 5510616
+Transaction committed; inserted row verified
+Transaction rolled back after duplicate key
+Buffered rows: 100000 heap delta: 11229040
 [STREAM] 10000
 [STREAM] 20000
 [STREAM] 30000
@@ -98,6 +36,10 @@ Buffered rows: 100000 heap delta: 5510616
 [STREAM] 80000
 [STREAM] 90000
 [STREAM] 100000
-Stream rows: 100000 peak heap bytes: 30448240
-Pool recreation demonstration: close old pool and open a new one.
+Stream rows: 100000 peak heap bytes: 28767552
+Connection released; pool closed
+Lost connection forwarded to pool: PROTOCOL_CONNECTION_LOST
+Recreating pool after connection loss
+New pool query succeeded
+[POOL ERROR] PROTOCOL_CONNECTION_LOST
 Exit code: 0

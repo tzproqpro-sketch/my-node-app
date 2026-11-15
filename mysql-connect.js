@@ -2,7 +2,7 @@ const { mysql, config, createPool } = require("./db");
 async function main() {
   let connection;
   try {
-    connection = await mysql.createConnection(config).promise();
+    connection = await require("mysql2/promise").createConnection(config);
     console.log(
       "Single connection:",
       (

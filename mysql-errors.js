@@ -1,23 +1,24 @@
 const { mysql, config, createPool } = require("./db");
 const assert = require("node:assert/strict");
-async function expectError(label, action) {
+async function expectError(label, code, action) {
   try {
     await action();
     throw new Error("Expected error: " + label);
   } catch (error) {
     if (error.message === "Expected error: " + label) throw error;
+    assert.equal(error.code, code, label);
     console.log(label, error.code);
   }
 }
 async function main() {
-  await expectError("Unavailable port", async () => {
+  await expectError("Unavailable port", "ECONNREFUSED", async () => {
     const c = await require("mysql2/promise").createConnection({
       ...config,
       port: 1,
     });
     await c.end();
   });
-  await expectError("Authentication", async () => {
+  await expectError("Authentication", "ER_ACCESS_DENIED_ERROR", async () => {
     const c = await require("mysql2/promise").createConnection({
       ...config,
       password: "intentionally-wrong",
@@ -27,7 +28,7 @@ async function main() {
   let pool = createPool();
   const db = pool.promise();
   try {
-    await expectError("Syntax", () => db.query("SELECT * FRM students"));
+    await expectError("Syntax", "ER_PARSE_ERROR", () => db.query("SELECT * FRM students"));
     const connection = await db.getConnection();
     try {
       await connection.query(
@@ -37,10 +38,10 @@ async function main() {
         1,
         "Trofim",
       ]);
-      await expectError("Duplicate", () =>
+      await expectError("Duplicate", "ER_DUP_ENTRY", () =>
         connection.execute("INSERT INTO error_demo VALUES (?, ?)", [1, "Anna"]),
       );
-      await expectError("Not null", () =>
+      await expectError("Not null", "ER_BAD_NULL_ERROR", () =>
         connection.execute("INSERT INTO error_demo VALUES (?, ?)", [2, null]),
       );
       await connection.beginTransaction();
@@ -62,7 +63,8 @@ async function main() {
           "Duplicate",
         ]);
         await connection.commit();
-      } catch {
+      } catch (error) {
+        assert.equal(error.code, "ER_DUP_ENTRY");
         await connection.rollback();
         console.log("Transaction rolled back after duplicate key");
       }
@@ -82,15 +84,20 @@ async function main() {
           ]),
         ]);
       }
+      if (global.gc) global.gc();
       const baseline = process.memoryUsage().heapUsed;
-      const [rows] = await connection.query("SELECT * FROM big_data");
+      let [rows] = await connection.query("SELECT * FROM big_data");
       console.log(
         "Buffered rows:",
         rows.length,
         "heap delta:",
         process.memoryUsage().heapUsed - baseline,
       );
-      rows.length = 0;
+      assert.equal(rows.length, 100000);
+      rows = null;
+      if (global.gc) global.gc();
+      const streamBaseline = process.memoryUsage().heapUsed;
+      const started = performance.now();
       let count = 0;
       let peak = process.memoryUsage().heapUsed;
       await new Promise((resolve, reject) => {
@@ -106,7 +113,7 @@ async function main() {
         stream.on("end", resolve);
       });
       assert.equal(count, 100000);
-      console.log("Stream rows:", count, "peak heap bytes:", peak);
+      console.log("Stream rows:", count, "sampled peak heap bytes:", peak, "heap delta:", peak - streamBaseline, "elapsed ms:", Math.round(performance.now() - started));
     } finally {
       connection.release();
     }
@@ -123,14 +130,15 @@ async function main() {
       const timeout = setTimeout(() => reject(new Error("Expected connection loss")), 3000);
       pool.once("error", (error) => { clearTimeout(timeout); resolve(error); });
     });
-    connection.release();
-    const killer = await recovered.getConnection();
-    // Keep the first connection busy so a different one sends KILL.
     const other = await recovered.getConnection();
-    await other.query("KILL CONNECTION " + id);
-    other.release();
-    killer.release();
+    try {
+      await other.query("KILL CONNECTION " + Number(id));
+    } finally {
+      other.release();
+      connection.release();
+    }
     const error = await failed;
+    assert.equal(error.code, "PROTOCOL_CONNECTION_LOST");
     console.log("Lost connection forwarded to pool:", error.code);
   } finally {
     await recovered.end();

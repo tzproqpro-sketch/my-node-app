@@ -17,6 +17,9 @@ async function main() {
       "INSERT INTO students (name, group_name, course, grade) VALUES (?, ?, ?, ?), (?, ?, ?, ?)",
       ["Anna", "477", 1, 3.8, "Ivan", "477", 3, 4.2],
     );
+    assert.equal(inserted.affectedRows, 1);
+    assert.ok(inserted.insertId > 0);
+    assert.equal(bulk.affectedRows, 2);
     console.log("Bulk INSERT: affectedRows=", bulk.affectedRows);
     console.log("All:", JSON.stringify((await connection.query("SELECT * FROM students"))[0]));
     console.log("Filtered and sorted:", JSON.stringify((await connection.execute("SELECT * FROM students WHERE group_name = ? ORDER BY grade DESC LIMIT ? OFFSET ?", ["477", 10, 0]))[0]));

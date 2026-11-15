@@ -2,7 +2,7 @@ const { spawnSync } = require("node:child_process");
 const fs = require("node:fs");
 const lines = [];
 for (const file of ["mysql-connect.js", "mysql-crud.js", "mysql-errors.js"]) {
-  const result = spawnSync(process.execPath, [file], { encoding: "utf8" });
+  const result = spawnSync(process.execPath, ["--expose-gc", file], { timeout: 60000, encoding: "utf8" });
   lines.push(
     file,
     (result.stdout + result.stderr).trimEnd(),

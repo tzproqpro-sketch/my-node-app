@@ -1,60 +1,28 @@
-$ node events-basic.js
-[greet] Hello, Trofim
-greet with listener: true
-[info] Group 477
-[bye] Goodbye!
-unknown without listeners: false
-
-Exit code: 0
-$ node events-once.js
-[tick] on: 1
-[tick] once: 1
-[tick] on: 2
-[tick] on: 3
-on calls: 3 once calls: 1
-Listener names: [ 'first', 'second', 'third' ]
-Before removal: 3
-1. Group 477
-2. Second listener
-3. Third listener
-After removeListener: 2
-After removeAllListeners: 0
-
-Exit code: 0
-$ node events-class.js
-[connect] Group 477: connected to simulated database
-[query] Group 477: SELECT * FROM students [{"name":"Trofim","group":"477"}]
-[close] Group 477: connection closed
-[error] Group 477: Connection is closed
-[error] Group 477: Connection timeout
-
-Exit code: 0
-$ node events-class.js --unhandled-error
-
-node:events:487
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: Demonstration: no error listener
-    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:31:14)
-    at Module._compile (node:internal/modules/cjs/loader:1872:14)
-    at Object..js (node:internal/modules/cjs/loader:2003:10)
-    at Module.load (node:internal/modules/cjs/loader:1594:32)
-    at Module._load (node:internal/modules/cjs/loader:1396:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47
-Emitted 'error' event on DatabaseConnection instance at:
-    at DatabaseConnection.error (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:25:10)
-    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:31:8)
-    at Module._compile (node:internal/modules/cjs/loader:1872:14)
-    at Object..js (node:internal/modules/cjs/loader:2003:10)
-    at Module.load (node:internal/modules/cjs/loader:1594:32)
-    at Module._load (node:internal/modules/cjs/loader:1396:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47
-
-Node.js v24.19.0
-Exit code: 1
-All checks passed; unhandled error failed in an isolated child process as expected.
+$ node stream-readable.js
+[CHUNK 1] Group: 477
+[CHUNK 2] Student: Zubelik Trofim Alekseevich
+[CHUNK 3] Laboratory work: 21
+[CHUNK 4] Topic: Streams in Node.js
+[END] Chunks: 4 Bytes: 93
+$ node stream-writable.js
+[WRITE] Group: 477
+write() returned: true
+write() returned: false
+[WRITE] Student: Zubelik Trofim Alekseevich
+[DRAIN] Continue writing
+[WRITE] Laboratory work: 21
+write() returned: false
+[DRAIN] Continue writing
+[WRITE] Topic: Streams
+write() returned: true
+[FINISH] Written chunks: 4
+$ node stream-pipe.js
+pipe(): copy completed
+pipe() error: ENOENT destination destroyed: false
+pipeline(): copy completed
+pipeline() error: ENOENT all streams destroyed: true
+Copies match; uppercase/reverse chain output:
+12 KROW YROTAROBAL
+HCIVEESKELA MIFORT KILEBUZ :TNEDUTS
+774 PUORG
+All stream checks passed.

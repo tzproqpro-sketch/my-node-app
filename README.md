@@ -1,6 +1,9 @@
-# Laboratory Work 19
+# Laboratory Work 22
 
-Tasks 1-3 only: EventEmitter basics, listener management, and inheritance.
-Run npm test or npm run task1, npm run task2, npm run task3.
-DatabaseConnection simulates a database, as allowed by the assignment. It does not connect to a real DBMS.
-The test runner isolates the intentional unhandled error in a child process and checks exit code 1.
+Tasks 1-3: MySQL connection and pool, parameterized CRUD, errors, transactions and streaming 100000 rows.
+Copy .env.example to .env and set your local credentials. The application uses student, never root.
+If Docker is installed, docker compose up -d provides a dedicated MySQL server. Wait until ready, then npm install and npm test.
+The CRUD demonstration rolls back its changes. Large data and error demonstration tables are temporary.
+Verified against a real isolated MySQL 8.4.0 instance on localhost port 33306 using the student account: single connection, pool, CRUD, expected errors, commit/rollback, buffered and streamed reads of 100000 records. See test-results.txt for the actual output. The temporary server was stopped after the run.
+
+Rechecked tasks 1-3 on MySQL 8.4.0 as student, using an isolated server on port 33306. Native console screenshots are in screenshots/ and the pull request description. Verified real authentication errors, safe read-only injection demonstration, commit/rollback, 100000-row streaming and recovery after KILL CONNECTION. The .env screenshot hides the password. Variant number: 9; the supplied handout has no separate numbered variant conditions.

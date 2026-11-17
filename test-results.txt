@@ -1,60 +1,46 @@
-$ node events-basic.js
-[greet] Hello, Trofim
-greet with listener: true
-[info] Group 477
-[bye] Goodbye!
-unknown without listeners: false
-
+mysql-connect.js
+Single connection: [ { version: '8.4.0', db: 'lab22_477', user: 'student@127.0.0.1' } ]
+Pool (limit 10): [ { version: '8.4.0', db: 'lab22_477', user: 'student@127.0.0.1' } ]
 Exit code: 0
-$ node events-once.js
-[tick] on: 1
-[tick] once: 1
-[tick] on: 2
-[tick] on: 3
-on calls: 3 once calls: 1
-Listener names: [ 'first', 'second', 'third' ]
-Before removal: 3
-1. Group 477
-2. Second listener
-3. Third listener
-After removeListener: 2
-After removeAllListeners: 0
-
+mysql-crud.js
+Table students created: InnoDB, utf8mb4
+INSERT: insertId= 28 affectedRows= 1
+Bulk INSERT: affectedRows= 2
+All: [{"id":28,"name":"Trofim","group_name":"477","course":2,"grade":"4.50","created_at":"2026-11-15T20:44:31.000Z"},{"id":29,"name":"Anna","group_name":"477","course":1,"grade":"3.80","created_at":"2026-11-15T20:44:31.000Z"},{"id":30,"name":"Ivan","group_name":"477","course":3,"grade":"4.20","created_at":"2026-11-15T20:44:31.000Z"}]
+Filtered and sorted: [{"id":28,"name":"Trofim","group_name":"477","course":2,"grade":"4.50","created_at":"2026-11-15T20:44:31.000Z"},{"id":30,"name":"Ivan","group_name":"477","course":3,"grade":"4.20","created_at":"2026-11-15T20:44:31.000Z"},{"id":29,"name":"Anna","group_name":"477","course":1,"grade":"3.80","created_at":"2026-11-15T20:44:31.000Z"}]
+UPDATE: affectedRows= 1 changedRows= 1
+UPDATE: affectedRows= 1 changedRows= 0
+Unsafe concatenation (SELECT only): SELECT * FROM students WHERE name = 'Trofim' OR '1'='1'
+Unsafe SELECT returned rows: 3
+Parameterized lookup: 0 rows; input treated as a value.
+DELETE: 1
+Delete group within transaction: 2
+Demo changes rolled back. Existing rows preserved.
 Exit code: 0
-$ node events-class.js
-[connect] Group 477: connected to simulated database
-[query] Group 477: SELECT * FROM students [{"name":"Trofim","group":"477"}]
-[close] Group 477: connection closed
-[error] Group 477: Connection is closed
-[error] Group 477: Connection timeout
-
+mysql-errors.js
+Unavailable port ECONNREFUSED
+Authentication ER_ACCESS_DENIED_ERROR
+Syntax ER_PARSE_ERROR
+Duplicate ER_DUP_ENTRY
+Not null ER_BAD_NULL_ERROR
+Foreign key ER_NO_REFERENCED_ROW_2
+Transaction committed; inserted row verified
+Transaction rolled back after duplicate key
+Buffered rows: 100000 heap delta: 11395360
+[STREAM] 10000
+[STREAM] 20000
+[STREAM] 30000
+[STREAM] 40000
+[STREAM] 50000
+[STREAM] 60000
+[STREAM] 70000
+[STREAM] 80000
+[STREAM] 90000
+[STREAM] 100000
+Stream rows: 100000 sampled peak heap bytes: 34214104 heap delta: 14284472 elapsed ms: 164
+Connection released; pool closed
+Lost connection forwarded to pool: PROTOCOL_CONNECTION_LOST
+Recreating pool after connection loss
+New pool query succeeded
+[POOL ERROR] PROTOCOL_CONNECTION_LOST
 Exit code: 0
-$ node events-class.js --unhandled-error
-
-node:events:487
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: Demonstration: no error listener
-    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:31:14)
-    at Module._compile (node:internal/modules/cjs/loader:1872:14)
-    at Object..js (node:internal/modules/cjs/loader:2003:10)
-    at Module.load (node:internal/modules/cjs/loader:1594:32)
-    at Module._load (node:internal/modules/cjs/loader:1396:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47
-Emitted 'error' event on DatabaseConnection instance at:
-    at DatabaseConnection.error (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:25:10)
-    at Object.<anonymous> (C:\Users\Трофим\OneDrive\Desktop\Новая папка (2)\lab19-proof\events-class.js:31:8)
-    at Module._compile (node:internal/modules/cjs/loader:1872:14)
-    at Object..js (node:internal/modules/cjs/loader:2003:10)
-    at Module.load (node:internal/modules/cjs/loader:1594:32)
-    at Module._load (node:internal/modules/cjs/loader:1396:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47
-
-Node.js v24.19.0
-Exit code: 1
-All checks passed; unhandled error failed in an isolated child process as expected.

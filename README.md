@@ -1,6 +1,7 @@
-# Laboratory Work 19
+# Laboratory Work 20
 
-Tasks 1-3 only: EventEmitter basics, listener management, and inheritance.
-Run npm test or npm run task1, npm run task2, npm run task3.
-DatabaseConnection simulates a database, as allowed by the assignment. It does not connect to a real DBMS.
-The test runner isolates the intentional unhandled error in a child process and checks exit code 1.
+Tasks 1-3 using only Node.js built-in modules: routing, headers and request-body streams.
+Run npm start for port 3000. Run npm test for HTTP checks on an automatically assigned local port.
+Routes: /, /about, /headers, /headers/set, /headers/check, POST /echo, POST /form.
+Bodies larger than 1 MiB return 413. Malformed JSON returns 400. Binary echo preserves bytes.
+X-Group uses the student's actual group 477 in an ASCII-safe HTTP header.

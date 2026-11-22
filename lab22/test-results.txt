@@ -26,7 +26,7 @@ Not null ER_BAD_NULL_ERROR
 Foreign key ER_NO_REFERENCED_ROW_2
 Transaction committed; inserted row verified
 Transaction rolled back after duplicate key
-Buffered rows: 100000 heap delta: 11395360
+Buffered rows: 100000 heap delta: 10563824
 [STREAM] 10000
 [STREAM] 20000
 [STREAM] 30000
@@ -37,10 +37,9 @@ Buffered rows: 100000 heap delta: 11395360
 [STREAM] 80000
 [STREAM] 90000
 [STREAM] 100000
-Stream rows: 100000 sampled peak heap bytes: 34214104 heap delta: 14284472 elapsed ms: 164
+Stream rows: 100000 heap delta: -10325336 sampled peak heap bytes: 34037184 elapsed ms: 155
 Connection released; pool closed
 Lost connection forwarded to pool: PROTOCOL_CONNECTION_LOST
 Recreating pool after connection loss
 New pool query succeeded
-[POOL ERROR] PROTOCOL_CONNECTION_LOST
 Exit code: 0

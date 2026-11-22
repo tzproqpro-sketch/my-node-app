@@ -1,0 +1,28 @@
+$ node stream-readable.js
+[CHUNK 1] Group: 477
+[CHUNK 2] Student: Zubelik Trofim Alekseevich
+[CHUNK 3] Laboratory work: 21
+[CHUNK 4] Topic: Streams in Node.js
+[END] Chunks: 4 Bytes: 93
+$ node stream-writable.js
+[WRITE] Group: 477
+write() returned: true
+write() returned: false
+[WRITE] Student: Zubelik Trofim Alekseevich
+[DRAIN] Continue writing
+[WRITE] Laboratory work: 21
+write() returned: false
+[DRAIN] Continue writing
+[WRITE] Topic: Streams
+write() returned: true
+[FINISH] Written chunks: 4
+$ node stream-pipe.js
+pipe(): copy completed
+pipe() error: ENOENT destination destroyed: false
+pipeline(): copy completed
+pipeline() error: ENOENT all streams destroyed: true
+Copies match; uppercase/reverse chain output:
+12 KROW YROTAROBAL
+HCIVEESKELA MIFORT KILEBUZ :TNEDUTS
+774 PUORG
+All stream checks passed.

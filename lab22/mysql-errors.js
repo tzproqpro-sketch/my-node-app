@@ -101,6 +101,7 @@ async function main() {
       if (global.gc) global.gc();
       const baseline = process.memoryUsage().heapUsed;
       let [rows] = await connection.query("SELECT * FROM big_data");
+      if (global.gc) global.gc();
       console.log(
         "Buffered rows:",
         rows.length,
@@ -127,7 +128,8 @@ async function main() {
         stream.on("end", resolve);
       });
       assert.equal(count, 100000);
-      console.log("Stream rows:", count, "sampled peak heap bytes:", peak, "heap delta:", peak - streamBaseline, "elapsed ms:", Math.round(performance.now() - started));
+      if (global.gc) global.gc();
+      console.log("Stream rows:", count, "heap delta:", process.memoryUsage().heapUsed - streamBaseline, "sampled peak heap bytes:", peak, "elapsed ms:", Math.round(performance.now() - started));
     } finally {
       connection.release();
     }

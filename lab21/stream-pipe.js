@@ -64,12 +64,16 @@ async function main() {
       callback(null, chunk.toString().split("").reverse().join(""));
     },
   });
-  await pipeline(
-    fs.createReadStream("input.txt"),
-    uppercase,
-    reverse,
-    fs.createWriteStream("output-chain.txt"),
-  );
+  const chainSource = fs.createReadStream("input.txt");
+  const chainTarget = fs.createWriteStream("output-chain.txt");
+  const streams = [chainSource, uppercase, reverse, chainTarget];
+  const completed = Promise.all(streams.map((stream) => finished(stream)));
+  try {
+    chainSource.pipe(uppercase).pipe(reverse).pipe(chainTarget);
+    await completed;
+  } finally {
+    for (const stream of streams) stream.destroy();
+  }
   assert.equal(
     await fsp.readFile("input.txt", "utf8"),
     await fsp.readFile("output-pipeline.txt", "utf8"),
